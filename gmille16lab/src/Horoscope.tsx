@@ -7,8 +7,8 @@ import {TextBox} from './TextBox';
 
 
 // @ts-ignore
-import {AwesomeButton} from "react-awesome-button";  // for external button
-import "react-awesome-button/dist/styles.css";  // for external button styling
+import {AwesomeButton} from "react-awesome-button";
+import "react-awesome-button/dist/styles.css"; // for external button
 import axios from 'axios';
 
 function Horoscope() {
@@ -48,6 +48,7 @@ function Horoscope() {
     }
 
 
+
     return (
         <div>
             <header> Horoscope </header>
@@ -55,12 +56,11 @@ function Horoscope() {
             <TextBox label={"Moon Sign"} change={setMoon}/>
             <TextBox label={"Rising Sign"} change={setRising}/>
 
-            <AwesomeButton
-                type="primary"
-                ripple
-                onPress={requestHoroscope}>
-                Submit! </AwesomeButton>
+            <AwesomeButton onPress={requestHoroscope}>Submit</AwesomeButton>
+            <p>
                 {horoscope.map(x => React.createElement('p', {}, x))}
+            </p>
+
 
 
         </div>
