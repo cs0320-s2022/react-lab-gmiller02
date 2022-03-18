@@ -1,14 +1,15 @@
 import logo from './logo.svg';
-import './Horoscope.css';
-import {TextBox} from './TextBox';
 import React, {useState} from 'react';  // for hooks!
+import './App.css';
 
-// @ts-ignore
-import axios from 'axios';
+import './TextBox';
+import {TextBox} from './TextBox';
+
 
 // @ts-ignore
 import {AwesomeButton} from "react-awesome-button";  // for external button
 import "react-awesome-button/dist/styles.css";  // for external button styling
+import axios from 'axios';
 
 function Horoscope() {
     const [sun, setSun] = useState("");
@@ -49,15 +50,18 @@ function Horoscope() {
 
     return (
         <div>
+            <header> Horoscope </header>
             <TextBox label={"Sun Sign"} change={setSun}/>
             <TextBox label={"Moon Sign"} change={setMoon}/>
             <TextBox label={"Rising Sign"} change={setRising}/>
 
-            <AwesomeButton type="primary" onPress={requestHoroscope}> Submit! </AwesomeButton>
+            <AwesomeButton
+                type="primary"
+                ripple
+                onPress={requestHoroscope}>
+                Submit! </AwesomeButton>
+                {horoscope.map(x => React.createElement('p', {}, x))}
 
-            <ul>
-                {horoscope.map(item => <li>{item}</li>)}
-            </ul>
 
         </div>
     );
